@@ -120,7 +120,7 @@ Validation results are shown in the right rail and injected into React Flow rend
 
 `POST /simulate` is represented by `workflowApi.simulateWorkflow(graph)` and returns ordered execution logs based on the workflow graph.
 
-## Completed vs Future Work
+## Completed 
 
 Completed:
 
@@ -132,12 +132,3 @@ Completed:
 - undo/redo
 - JSON export/import
 - visual error indicators
-
-Future production additions:
-
-- backend persistence and versioned workflow drafts
-- collaborative editing
-- richer auto-layout
-- test suite with React Testing Library and Playwright
-- schema-driven form registry for third-party node extensions
-- server-side validation parity
