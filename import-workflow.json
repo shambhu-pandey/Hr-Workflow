@@ -1,0 +1,90 @@
+{
+  "nodes": [
+    {
+      "id": "start-1",
+      "type": "start",
+      "position": { "x": 40, "y": 160 },
+      "data": {
+        "kind": "start",
+        "label": "Employee onboarding",
+        "description": "Entry point for an HR process",
+        "config": {
+          "startTitle": "Employee onboarding",
+          "metadata": [
+            { "id": "field-1", "key": "department", "value": "People Operations" }
+          ]
+        }
+      }
+    },
+    {
+      "id": "task-1",
+      "type": "task",
+      "position": { "x": 360, "y": 160 },
+      "data": {
+        "kind": "task",
+        "label": "Collect joining documents",
+        "description": "Human-owned work item",
+        "config": {
+          "title": "Collect joining documents",
+          "description": "Collect identity, bank, and tax documents from the employee.",
+          "assignee": "HR Coordinator",
+          "dueDate": "",
+          "customFields": []
+        }
+      }
+    },
+    {
+      "id": "approval-1",
+      "type": "approval",
+      "position": { "x": 680, "y": 160 },
+      "data": {
+        "kind": "approval",
+        "label": "Manager approval",
+        "description": "Role-based approval gate",
+        "config": {
+          "title": "Manager approval",
+          "approverRole": "Manager",
+          "threshold": 1
+        }
+      }
+    },
+    {
+      "id": "automated-1",
+      "type": "automated",
+      "position": { "x": 1000, "y": 160 },
+      "data": {
+        "kind": "automated",
+        "label": "Send welcome email",
+        "description": "System-triggered action",
+        "config": {
+          "title": "Send welcome email",
+          "actionId": "send_email",
+          "params": {
+            "to": "{{employee.email}}",
+            "subject": "Welcome to the team"
+          }
+        }
+      }
+    },
+    {
+      "id": "end-1",
+      "type": "end",
+      "position": { "x": 1320, "y": 160 },
+      "data": {
+        "kind": "end",
+        "label": "Onboarding workflow completed",
+        "description": "Workflow completion point",
+        "config": {
+          "endMessage": "Onboarding workflow completed",
+          "includeSummary": true
+        }
+      }
+    }
+  ],
+  "edges": [
+    { "id": "start-1-task-1", "source": "start-1", "target": "task-1", "type": "smoothstep" },
+    { "id": "task-1-approval-1", "source": "task-1", "target": "approval-1", "type": "smoothstep" },
+    { "id": "approval-1-automated-1", "source": "approval-1", "target": "automated-1", "type": "smoothstep" },
+    { "id": "automated-1-end-1", "source": "automated-1", "target": "end-1", "type": "smoothstep" }
+  ]
+}
